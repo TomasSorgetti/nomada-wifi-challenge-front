@@ -1,42 +1,50 @@
 "use client";
 import React, { useState } from "react";
-import styles from "./LoginForm.module.css";
+import styles from "./RegisterForm.module.css";
 import FormField from "@/components/ui/formField/FormField";
 import Button from "@/components/ui/button/Button";
 import GoogleButton from "@/components/ui/googleButton/GoogleButton";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { authService } from "@/services/auth";
-export default function LoginForm() {
+import { useRouter } from "next/navigation";
+export default function RegisterForm() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({
     email: "",
     password: "",
+    confirm: "",
   });
-  const [dataError, setDataError] = useState("");
+  const [dataErrors, setDataErrors] = useState({
+    email: "",
+    password: "",
+    confirm: "",
+  });
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setData({ ...data, [name]: value });
   };
-  //TODO cambiar a redux para guardar el user
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const condition = data.email && data.password;
+    // TODO agregar errores en la condicion y hacer validaciones
+    const condition = data.email && data.password && data.confirm;
     if (condition) {
       setIsLoading(true);
       try {
-        const response = await authService("login", {
+        const response = await authService("register", {
           email: data.email,
           password: data.password,
         });
-        const payload = await response.json();
-        if (response.status !== 201) {
-          setDataError(payload.message);
+        // TODO sacar el console
+        console.log(response);
+        if (response.status === 400) {
+          setDataErrors({
+            ...dataErrors,
+            email: "Email already in use",
+          });
         }
         if (response.status === 201) {
-          localStorage.setItem("token", payload.accessToken);
-          router.push("/");
+          router.push("/login");
         }
       } catch (error) {
         console.log("Error register form", error);
@@ -47,9 +55,8 @@ export default function LoginForm() {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <h1>Iniciar Sesión</h1>
-      {dataError && <p>{dataError}</p>}
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <h1>Registrarse</h1>
       {isLoading && <p>Enviando...</p>}
       <>
         <FormField
@@ -59,6 +66,7 @@ export default function LoginForm() {
           placeholder="johndoe@gmail.com"
           value={data.email}
           handleChange={handleChange}
+          error={dataErrors.email}
         />
         <FormField
           type="password"
@@ -67,23 +75,26 @@ export default function LoginForm() {
           placeholder="********"
           value={data.password}
           handleChange={handleChange}
+          error={dataErrors.password}
+        />
+        <FormField
+          type="password"
+          label="Confirmar contraseña:"
+          name="confirm"
+          placeholder="********"
+          value={data.confirm}
+          handleChange={handleChange}
+          error={dataErrors.confirm}
         />
       </>
-      <div className={styles.rememberMe}>
-        <input type="checkbox" name="persist" id="persist" />
-        <label htmlFor="persist">Recordarme</label>
-      </div>
-      <Button stroked={true} variant="large" disabled={isLoading}>
-        Iniciar Sesión
+      <Button stroked={false} variant="large" disabled={isLoading}>
+        Registrarse
       </Button>
-      <p className={styles.register}>
-        ¿Todavía no tienes una cuenta? <Link href="/register">Registrarse</Link>
+      <p className={styles.login}>
+        ¿Ya tienes una cuenta? <Link href="/login">Iniciar sesión</Link>
       </p>
       <div className={styles.divider}></div>
       <GoogleButton>Continuar con Google</GoogleButton>
-      <p className={styles.forgotPassword}>
-        ¿Olvidaste tu contraseña? <a href="#">Cambiar contraseña</a>
-      </p>
     </form>
   );
 }
