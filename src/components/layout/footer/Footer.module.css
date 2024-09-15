@@ -1,13 +1,21 @@
 .footer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem;
-  /* background-color: var(--background); */
-  background-color: red;
+  justify-content: center;
+  background-color: var(--background);
 }
 .footer a {
-  background-color: blue;
   color: var(--lightTextColor);
-  padding: 0.6rem 2rem;
+  width: 120px;
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  font-weight: 400;
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+.footer a.active {
+  color: var(--blueColor);
 }
