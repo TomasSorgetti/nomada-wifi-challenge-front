@@ -1,0 +1,13 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  /* background-color: var(--background); */
+  background-color: red;
+}
+.footer a {
+  background-color: blue;
+  color: var(--lightTextColor);
+  padding: 0.6rem 2rem;
+}
