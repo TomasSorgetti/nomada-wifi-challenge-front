@@ -1,9 +1,12 @@
+/* TODO Animar button en hover */
+
 .button {
   width: 100%;
   border-radius: 8px;
   border: none;
   color: white;
   background-color: var(--background);
+  font-weight: 700;
 }
 .button.large {
   height: 48px;

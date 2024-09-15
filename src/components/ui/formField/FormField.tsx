@@ -1,6 +1,7 @@
 import styles from "./FormField.module.css";
 
 interface FormFieldProps {
+  type: string;
   label: string;
   name: string;
   placeholder: string;
@@ -10,6 +11,7 @@ interface FormFieldProps {
 }
 
 export default function FormField({
+  type,
   label,
   name,
   placeholder,
@@ -21,6 +23,7 @@ export default function FormField({
     <div className={`${styles.formField} ${error ? styles.errorField : ""}`}>
       <label htmlFor={name}>{label}</label>
       <input
+        type={type}
         id={name}
         name={name}
         placeholder={placeholder}
