@@ -1,9 +1,10 @@
+import MainNavbar from "@/components/layout/mainNavbar/MainNavbar";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
     <div className={styles.page}>
-      {/* navbar     */}
+      <MainNavbar />
       <main className={styles.main}>
         <h1>Todas las opciones</h1>
         {/* carrousel1     */}
