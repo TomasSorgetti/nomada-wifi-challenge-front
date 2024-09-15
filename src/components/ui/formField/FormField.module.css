@@ -1,0 +1,27 @@
+.formField {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+  width: 100%;
+  position: relative;
+}
+.formField input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  height: 48px;
+}
+.errorField input {
+  border: 1px solid var(--pinkColor);
+}
+.error {
+  color: var(--pinkColor);
+  font-size: 0.8rem;
+  position: absolute;
+  left: 0;
+  bottom: -1rem;
+}
+
+/* border-image: linear-gradient(from var(--blueColor) to var(--pinkColor));
+border-image-slice: 1; */

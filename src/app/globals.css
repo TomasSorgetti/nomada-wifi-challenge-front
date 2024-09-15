@@ -3,17 +3,18 @@
   --titleColor: #eeeeee;
   --lightTextColor: #ffffff;
   --darkTextColor: #2d3748;
-  
+
   /* backgrounds */
   --darkBackground: #010316;
   --background: #010316;
   --cardsBackground: #13132d;
-  
+
   /* colors */
   --blueColor: #3540e8;
   --pinkColor: #e41ad6;
   --lightOrange: #feebcb;
   --orange: #dd6b20;
+  --errorColor: #e73b21;
 }
 
 * {
@@ -25,8 +26,11 @@
 body {
   background-color: var(--background);
   color: var(--lightTextColor);
+  font-family: var(--font-roboto);
 }
-
+h1 {
+  font-weight: 600;
+}
 h1,
 h2,
 h3,

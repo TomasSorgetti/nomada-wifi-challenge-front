@@ -1,0 +1,39 @@
+.button {
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  background-color: var(--background);
+}
+.button.large {
+  height: 48px;
+}
+
+.button.stroked {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button.stroked::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 101.2%;
+  height: 108%;
+  border-radius: 9px;
+  background-image: linear-gradient(
+    to right,
+    var(--pinkColor),
+    var(--blueColor)
+  );
+}
+
+.button.default {
+  border: none;
+  background-image: linear-gradient(
+    to right,
+    var(--blueColor),
+    var(--pinkColor)
+  );
+}
