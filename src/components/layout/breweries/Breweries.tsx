@@ -1,11 +1,11 @@
 "use client";
 
+import { IBreweriesState } from "@/interfaces/breweries.interface";
 import styles from "./Breweries.module.css";
 import Carrousel from "@/components/ui/carrousel/Carrousel";
 import {
   fetchBreweries,
   fetchCaliforniaBreweries,
-  IBreweriesState,
 } from "@/lib/features/Breweries/BreweriesSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useEffect } from "react";

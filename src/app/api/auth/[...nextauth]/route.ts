@@ -6,7 +6,7 @@ const handler = NextAuth({
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: { label: "Email:", type: "email", placeholder: "prueba@gmail.com" },
+        email: { label: "Email:", type: "email", placeholder: "prueba@todosgamers.com" },
         password: { label: "Password:", type: "password" },
       },
       async authorize(credentials) {

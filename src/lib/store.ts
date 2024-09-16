@@ -1,8 +1,7 @@
 import { combineSlices, configureStore } from "@reduxjs/toolkit";
 import { BreweriesSlice } from "./features/Breweries/BreweriesSlice";
-import { AuthSlice } from "./features/auth/authSlice";
 
-const rootReducer = combineSlices(BreweriesSlice, AuthSlice);
+const rootReducer = combineSlices(BreweriesSlice);
 export const makeStore = () => {
   return configureStore({
     reducer: rootReducer,
