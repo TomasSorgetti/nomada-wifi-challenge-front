@@ -3,6 +3,8 @@ TODO => Crear El detail de las cervecerías
 TODO => Crear la segunda navbar
 TODO => Agregar filtros al segundo carrousel
 TODO => Pasar todas las interfaces a una carpeta aparte
+TODO => Eliminación de usuarios
+TODO => Skelletons
 
 <!-- {
     "id": "5128df48-79fc-4f0f-8b52-d06be54d0cec",

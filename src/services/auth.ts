@@ -1,15 +1,11 @@
-const BASE_URL = "http://localhost:8080/api/v1";
+import {
+  IAuthCredentials,
+  ILogin,
+  IRegister,
+} from "@/interfaces/auth.interface";
 
-interface IRegister {
-  email: string;
-  password: string;
-  username?: string;
-}
-interface ILogin {
-  email: string;
-  password: string;
-  persist?: boolean;
-}
+const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
 export const authService = async (path: string, body: IRegister) => {
   return await fetch(`${BASE_URL}/auth/${path}`, {
     method: "POST",
@@ -35,4 +31,18 @@ export const loginService = async ({ email, password, persist }: ILogin) => {
   return await response.json();
 };
 
-// TODO: Add logout, refresh and me
+export const deleteUserService = async ({
+  email,
+  password,
+}: IAuthCredentials) => {
+  const response = await fetch(`${BASE_URL}/users`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
+    body: JSON.stringify({ email, password }),
+  });
+  return await response.json();
+};
