@@ -10,17 +10,24 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
 import { signIn, signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function AuthIcons() {
-  const { data: session, status } = useSession();
+  //* Variables and Hooks
+  const router = useRouter();
+  const { data: session } = useSession();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
+  //* Handlers
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  //* Render component
   return (
     <div className={styles.container}>
       <Image src={BellIcon} alt="Bell icon" />
@@ -45,7 +52,14 @@ export default function AuthIcons() {
         >
           {session ? (
             <div>
-              <MenuItem onClick={handleClose}>Perfil</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  handleClose();
+                  router.push("/protected/profile");
+                }}
+              >
+                Perfil
+              </MenuItem>
               <MenuItem
                 onClick={() => {
                   signOut();
