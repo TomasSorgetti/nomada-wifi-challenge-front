@@ -1,0 +1,53 @@
+/* TODO Animar button en hover */
+
+.button {
+  width: 100%;
+  min-height: 2rem;
+  border-radius: 8px;
+  border: none;
+  color: var(--lightTextColor);
+  background-color: var(--background);
+  font-weight: 700;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button.small {
+  max-width: 244px;
+  height: 32px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.button.large {
+  height: 48px;
+}
+
+.button.stroked {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button.stroked::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 101.2%;
+  height: 108%;
+  border-radius: 9px;
+  background-image: linear-gradient(
+    to right,
+    var(--pinkColor),
+    var(--blueColor)
+  );
+}
+
+.button.default {
+  border: none;
+  background-image: linear-gradient(
+    to right,
+    var(--blueColor),
+    var(--pinkColor)
+  );
+}

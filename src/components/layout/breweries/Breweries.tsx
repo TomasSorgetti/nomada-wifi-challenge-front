@@ -1,5 +1,6 @@
 "use client";
 
+//* Imports
 import { IBreweriesState } from "@/interfaces/breweries.interface";
 import styles from "./Breweries.module.css";
 import Carrousel from "@/components/ui/carrousel/Carrousel";
@@ -10,6 +11,7 @@ import {
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useEffect } from "react";
 
+//* Main Component
 export default function Breweries() {
   const dispatch = useAppDispatch();
   const { breweries, californiaBreweries } = useAppSelector(
@@ -28,7 +30,6 @@ export default function Breweries() {
         console.error("Failed to fetch data:", error);
       }
     };
-
     fetchData();
   }, [dispatch, breweries, californiaBreweries]);
 
