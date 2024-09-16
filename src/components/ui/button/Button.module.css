@@ -2,11 +2,18 @@
 
 .button {
   width: 100%;
+  min-height: 2rem;
   border-radius: 8px;
   border: none;
-  color: white;
+  color: var(--lightTextColor);
   background-color: var(--background);
   font-weight: 700;
+}
+.button.small {
+  max-width: 244px;
+  height: 32px;
+  font-size: 1rem;
+  font-weight: 600;
 }
 .button.large {
   height: 48px;

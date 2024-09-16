@@ -1,0 +1,7 @@
+.carrousel {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  overflow: hidden;
+  padding: 0.75rem 0;
+}
