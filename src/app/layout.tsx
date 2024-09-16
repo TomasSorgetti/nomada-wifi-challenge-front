@@ -1,9 +1,8 @@
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import type { Metadata } from "next";
 import "./globals.css";
 import Footer from "@/components/layout/footer/Footer";
 import localFont from "next/font/local";
-import StoreProvider from "./StoreProvider";
+import AppProviders from "@/providers/AppProviders";
 
 const roboto = localFont({
   src: "./fonts/Roboto-Regular.ttf",
@@ -23,12 +22,10 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${roboto.variable}`}>
-        <StoreProvider>
-          <AppRouterCacheProvider>
+        <AppProviders>
             {children}
             <Footer />
-          </AppRouterCacheProvider>
-        </StoreProvider>
+        </AppProviders>
       </body>
     </html>
   );
