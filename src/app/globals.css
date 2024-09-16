@@ -28,6 +28,7 @@ body {
   color: var(--lightTextColor);
   font-family: var(--font-roboto);
 }
+
 h1 {
   font-weight: 600;
 }
