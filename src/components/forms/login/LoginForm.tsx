@@ -7,7 +7,7 @@ import GoogleButton from "@/components/ui/googleButton/GoogleButton";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-
+import ProgressBar from "@/components/ui/progressBar/ProgressBar";
 export default function LoginForm() {
   const router = useRouter();
   //* States
@@ -51,7 +51,7 @@ export default function LoginForm() {
 
   return (
     <>
-      {/* {isLoading && <p>Enviando...</p>} */}
+      <ProgressBar loading={isLoading} />
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.formHeader}>
           <h1>Iniciar Sesión</h1>
@@ -82,14 +82,14 @@ export default function LoginForm() {
         <Button stroked={true} variant="large" disabled={isLoading}>
           Iniciar Sesión
         </Button>
-        <p className={styles.register}>
-          ¿Todavía no tienes una cuenta?{" "}
-          <Link href="/register">Registrarse</Link>
+        <p className={styles.forgotPassword}>
+          ¿Olvidaste tu contraseña? <Link href="#">Cambiar contraseña</Link>
         </p>
         <div className={styles.divider}></div>
         <GoogleButton>Continuar con Google</GoogleButton>
-        <p className={styles.forgotPassword}>
-          ¿Olvidaste tu contraseña? <a href="#">Cambiar contraseña</a>
+        <p className={styles.register}>
+          ¿Todavía no tienes una cuenta?{" "}
+          <Link href="/register">Registrarse</Link>
         </p>
       </form>
     </>

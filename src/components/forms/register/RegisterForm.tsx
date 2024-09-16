@@ -1,4 +1,6 @@
 "use client";
+
+//* Imports
 import React, { useState } from "react";
 import styles from "./RegisterForm.module.css";
 import FormField from "@/components/ui/formField/FormField";
@@ -7,6 +9,9 @@ import GoogleButton from "@/components/ui/googleButton/GoogleButton";
 import Link from "next/link";
 import { authService } from "@/services/auth";
 import { useRouter } from "next/navigation";
+import ProgressBar from "@/components/ui/progressBar/ProgressBar";
+
+//* Main function
 export default function RegisterForm() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -55,46 +60,49 @@ export default function RegisterForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
-      <h1>Registrarse</h1>
-      {isLoading && <p>Enviando...</p>}
-      <>
-        <FormField
-          type="email"
-          label="Email:"
-          name="email"
-          placeholder="johndoe@gmail.com"
-          value={data.email}
-          handleChange={handleChange}
-          error={dataErrors.email}
-        />
-        <FormField
-          type="password"
-          label="Contraseña:"
-          name="password"
-          placeholder="********"
-          value={data.password}
-          handleChange={handleChange}
-          error={dataErrors.password}
-        />
-        <FormField
-          type="password"
-          label="Confirmar contraseña:"
-          name="confirm"
-          placeholder="********"
-          value={data.confirm}
-          handleChange={handleChange}
-          error={dataErrors.confirm}
-        />
-      </>
-      <Button stroked={false} variant="large" disabled={isLoading}>
-        Registrarse
-      </Button>
-      <p className={styles.login}>
-        ¿Ya tienes una cuenta? <Link href="/login">Iniciar sesión</Link>
-      </p>
-      <div className={styles.divider}></div>
-      <GoogleButton>Continuar con Google</GoogleButton>
-    </form>
+    <>
+      <ProgressBar loading={isLoading} />
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <h1>Registrarse</h1>
+        {isLoading && <p>Enviando...</p>}
+        <>
+          <FormField
+            type="email"
+            label="Email:"
+            name="email"
+            placeholder="johndoe@gmail.com"
+            value={data.email}
+            handleChange={handleChange}
+            error={dataErrors.email}
+          />
+          <FormField
+            type="password"
+            label="Contraseña:"
+            name="password"
+            placeholder="********"
+            value={data.password}
+            handleChange={handleChange}
+            error={dataErrors.password}
+          />
+          <FormField
+            type="password"
+            label="Confirmar contraseña:"
+            name="confirm"
+            placeholder="********"
+            value={data.confirm}
+            handleChange={handleChange}
+            error={dataErrors.confirm}
+          />
+        </>
+        <Button stroked={false} variant="large" disabled={isLoading}>
+          Registrarse
+        </Button>
+        <p className={styles.login}>
+          ¿Ya tienes una cuenta? <Link href="/login">Iniciar sesión</Link>
+        </p>
+        <div className={styles.divider}></div>
+        <GoogleButton>Continuar con Google</GoogleButton>
+      </form>
+    </>
   );
 }
