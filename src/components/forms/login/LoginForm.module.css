@@ -6,6 +6,19 @@
   flex-direction: column;
   gap: 1rem;
 }
+.formHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.formHeader span {
+  height: 1rem;
+  font-size: 0.8rem;
+  color: var(--errorColor);
+}
 
 /* Remember me */
 .rememberMe {

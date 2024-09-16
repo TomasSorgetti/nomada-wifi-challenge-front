@@ -1,4 +1,6 @@
 TODO => README
+TODO => Crear El detail de las cervecerías
+TODO => Crear la segunda navbar
 TODO => Agregar filtros al segundo carrousel
 TODO => Pasar todas las interfaces a una carpeta aparte
 

@@ -1,7 +1,6 @@
 import { getAllBreweries, getBreweriesByCountry } from "@/services/api";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-
 export interface IBrewery {
   id: string;
   name: string;
@@ -71,12 +70,12 @@ export const BreweriesSlice = createSlice({
         const newData = action.payload;
 
         if (JSON.stringify(state.breweries) !== JSON.stringify(newData)) {
-          state.isLoading = true;
+          state.isLoading = false;
           state.breweries = newData;
         }
       })
       .addCase(fetchBreweries.rejected, (state) => {
-        state.isLoading = true;
+        state.isLoading = false;
       })
       //*   California Breweries
       .addCase(fetchCaliforniaBreweries.pending, (state) => {
@@ -88,12 +87,12 @@ export const BreweriesSlice = createSlice({
         if (
           JSON.stringify(state.californiaBreweries) !== JSON.stringify(newData)
         ) {
-          state.isLoading = true;
+          state.isLoading = false;
           state.californiaBreweries = newData;
         }
       })
       .addCase(fetchCaliforniaBreweries.rejected, (state) => {
-        state.isLoading = true;
+        state.isLoading = false;
       });
     //*   Brewery
   },

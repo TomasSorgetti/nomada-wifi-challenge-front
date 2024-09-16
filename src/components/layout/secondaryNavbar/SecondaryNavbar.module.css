@@ -1,0 +1,13 @@
+.header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--darkBackground);
+  padding: 1rem 0rem 1rem 1rem;
+}
+
+.button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}

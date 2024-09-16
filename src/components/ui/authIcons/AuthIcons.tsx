@@ -9,8 +9,10 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-//TODO mostrar condicionalmente los links dependiendo si hay un token
+import { signIn, signOut, useSession } from "next-auth/react";
+
 export default function AuthIcons() {
+  const { data: session, status } = useSession();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -41,10 +43,31 @@ export default function AuthIcons() {
             "aria-labelledby": "basic-button",
           }}
         >
-          <MenuItem onClick={handleClose}>Iniciar Sesión</MenuItem>
-          <MenuItem onClick={handleClose}>Registrarse</MenuItem>
-          <MenuItem onClick={handleClose}>Perfil</MenuItem>
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
+          {session ? (
+            <div>
+              <MenuItem onClick={handleClose}>Perfil</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  signOut();
+                  handleClose();
+                }}
+              >
+                Logout
+              </MenuItem>
+            </div>
+          ) : (
+            <div>
+              <MenuItem
+                onClick={() => {
+                  signIn();
+                  handleClose();
+                }}
+              >
+                Iniciar Sesión
+              </MenuItem>
+              <MenuItem onClick={handleClose}>Registrarse</MenuItem>
+            </div>
+          )}
         </Menu>
       </div>
     </div>

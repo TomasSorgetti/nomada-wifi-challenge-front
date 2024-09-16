@@ -1,6 +1,7 @@
 .formField {
   display: flex;
   flex-direction: column;
+  gap: 0.25rem;
   margin-bottom: 1.2rem;
   width: 100%;
   position: relative;
@@ -16,15 +17,12 @@
   height: 48px;
 }
 .errorField input {
-  border: 1px solid var(--pinkColor);
+  border: 1px solid var(--errorColor);
 }
 .error {
-  color: var(--pinkColor);
+  color: var(--errorColor);
   font-size: 0.8rem;
   position: absolute;
   left: 0;
   bottom: -1rem;
 }
-
-/* border-image: linear-gradient(from var(--blueColor) to var(--pinkColor));
-border-image-slice: 1; */
