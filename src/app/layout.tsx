@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Footer from "@/components/layout/footer/Footer";
 import localFont from "next/font/local";
+import StoreProvider from "./StoreProvider";
 
 const roboto = localFont({
   src: "./fonts/Roboto-Regular.ttf",
@@ -22,10 +23,12 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${roboto.variable}`}>
-        <AppRouterCacheProvider>
-          {children}
-          <Footer />
-        </AppRouterCacheProvider>
+        <StoreProvider>
+          <AppRouterCacheProvider>
+            {children}
+            <Footer />
+          </AppRouterCacheProvider>
+        </StoreProvider>
       </body>
     </html>
   );
