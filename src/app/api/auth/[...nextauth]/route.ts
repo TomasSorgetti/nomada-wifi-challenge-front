@@ -6,7 +6,11 @@ const handler = NextAuth({
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: { label: "Email:", type: "email", placeholder: "prueba@todosgamers.com" },
+        email: {
+          label: "Email:",
+          type: "email",
+          placeholder: "prueba@todosgamers.com",
+        },
         password: { label: "Password:", type: "password" },
       },
       async authorize(credentials) {
@@ -21,27 +25,42 @@ const handler = NextAuth({
             headers: { "Content-Type": "application/json" },
           }
         );
-        const user = await res.json();
 
-        if (user.error) throw user;
+        const response = await res.json();
 
-        return user;
+        if (res.status !== 200) throw response;
+
+        return {
+          user: response.user,
+          accessToken: response.accessToken,
+          refreshToken: response.refreshToken,
+          accessTokenExpires: Date.now() + response.accessTokenExpires,
+        };
       },
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
-      return { ...token, ...user };
+    async jwt({ token, account, user }) {
+      if (account && user) {
+        console.log("NEXT API JWT", account);
+        console.log("NEXT API JWT", user);
+        return { ...token, ...user };
+      }
+
+      return token;
     },
     async session({ session, token }) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      session.user = token as any;
+      if (token) {
+        session.accessToken = token.accessToken;
+        session.refreshToken = token.refreshToken;
+        session.user = token.user;
+      }
       return session;
     },
   },
   pages: {
     signIn: "/login",
-  }
+  },
 });
 
 export { handler as GET, handler as POST };
