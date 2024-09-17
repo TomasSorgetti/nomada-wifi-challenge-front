@@ -9,7 +9,7 @@ import ProgressBar from "@/components/ui/progressBar/ProgressBar";
 export default function Profile() {
   const [isLoading, setIsLoading] = useState(false);
   const { data: session } = useSession();
-  const user = session?.user?.user;
+  const user = session?.user;
 
   //TODO PEDIR CONTRASEÑA PARA ELIMINAR
   const handleDeleteUser = async () => {
@@ -35,7 +35,7 @@ export default function Profile() {
       <main>
         <h1>Hola</h1>
         <p>Tu email es {user?.email}</p>
-        <p>Tu rol es de {user?.roles.name}</p>
+        <p>Tu rol es de {user?.roles?.name}</p>
         <button onClick={handleDeleteUser}>Delete user</button>
       </main>
     </>

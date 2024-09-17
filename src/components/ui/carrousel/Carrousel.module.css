@@ -1,7 +1,8 @@
-.carrousel {
-  display: flex;
-  gap: 0.5rem;
+.container {
   width: 100%;
   overflow: hidden;
   height: 191px;
+  display: flex;
+  
+  cursor: grab;
 }

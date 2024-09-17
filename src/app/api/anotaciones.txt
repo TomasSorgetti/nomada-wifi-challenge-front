@@ -1,0 +1,87 @@
+import {
+  CustomToken,
+  CustomUser,
+  RefreshTokenResponse,
+} from "@/interfaces/next-auth";
+import NextAuth, { Account, Profile } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+
+const handler = NextAuth({
+  providers: [
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        email: {
+          label: "Email:",
+          type: "email",
+          placeholder: "prueba@todosgamers.com",
+        },
+        password: { label: "Password:", type: "password" },
+      },
+      async authorize(credentials) {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`,
+          {
+            method: "POST",
+            body: JSON.stringify({
+              email: credentials?.email,
+              password: credentials?.password,
+            }),
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+
+        const user = await res.json();
+
+        if (res.status !== 200) throw user;
+        console.log("user", user);
+
+        return {
+          ...user,
+          accessToken: user.accessToken,
+          refreshToken: user.refreshToken,
+          accessTokenExpires: user.accessTokenExpires,
+        } as CustomUser;
+      },
+    }),
+  ],
+  callbacks: {
+    async jwt({
+      token,
+      user,
+      account,
+      profile,
+      trigger,
+      isNewUser,
+    }: {
+      token: CustomToken;
+      user: CustomUser | undefined;
+      account: Account | null;
+      profile?: Profile;
+      trigger?: "signIn" | "signUp" | "update";
+      isNewUser?: boolean;
+    }): Promise<CustomToken> {
+      if (user) {
+        token.accessToken = user.accessToken;
+        token.refreshToken = user.refreshToken;
+        token.accessTokenExpires = user.accessTokenExpires;
+      }
+
+      if (Date.now() < (token.accessTokenExpires || 0)) {
+        return token;
+      }
+
+      return refreshAccessToken(token);
+    },
+    
+    async session({
+      session,
+      token,
+    }: {
+      session: Session;
+      token: CustomToken;
+    }): Promise<Session> {
+      session.user = token as CustomUser;
+      return session;
+    },
+  },
