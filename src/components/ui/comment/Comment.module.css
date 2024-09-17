@@ -1,5 +1,7 @@
 .container {
-  padding-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 .userInfo {
   display: flex;
@@ -11,6 +13,11 @@
   align-items: center;
   gap: 0.5rem;
 }
+.avatarCont span {
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.0094rem;
+}
 .container p {
   font-size: 0.875rem;
   font-weight: 400;
@@ -21,4 +28,7 @@
   background-color: transparent;
   border: none;
   color: var(--pinkColor);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.4%;
 }

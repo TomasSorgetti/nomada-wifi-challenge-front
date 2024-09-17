@@ -5,9 +5,9 @@ import locationIcon from "@/assets/icons/location.svg";
 import phoneIcon from "@/assets/icons/phone.svg";
 import { cutText } from "@/utils/textUtils";
 import { formatPhone } from "@/utils/phoneUtils";
-import LinkedButton from "../../linkedButton/LinkedButton";
 import { IBrewery } from "@/interfaces/breweries.interface";
 import IconLabel from "../../iconLabel/IconLabel";
+import Button from "../../button/Button";
 export interface ICarrouselCardProps {
   brewery: IBrewery;
 }
@@ -31,9 +31,13 @@ export default function CarrouselCard({ brewery }: ICarrouselCardProps) {
         </div>
       </div>
       <div className={styles.buttonContainer}>
-        <LinkedButton obdbId={brewery.id} stroked={false} variant="small">
+        <Button
+          href={`/breweries/${brewery.id}`}
+          stroked={false}
+          variant="small"
+        >
           Ver más
-        </LinkedButton>
+        </Button>
       </div>
     </div>
   );

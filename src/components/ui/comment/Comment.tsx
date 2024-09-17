@@ -11,7 +11,7 @@ export default function Comment({ comment }: ICommentProps) {
       <div className={styles.userInfo}>
         <div className={styles.avatarCont}>
           <Avatar image={comment.avatar} />
-          <h3>{comment.username}</h3>
+          <span>{comment.username}</span>
         </div>
         <button className={styles.responder}>Responder</button>
       </div>
