@@ -76,3 +76,20 @@ Repositorio del Backend
 ```
 
 ## Diseño de la aplicación
+![image](https://github.com/user-attachments/assets/a047dba4-9e72-4541-b787-e4ccca81edb3)
+![image](https://github.com/user-attachments/assets/67eeb0c8-a4cb-44e5-bf98-852e5d9068aa)
+
+### Detalles agregados
+#### Login
+![image](https://github.com/user-attachments/assets/6efc0e13-1a29-4a75-b7b5-eeb2ffc7e617)
+#### Register
+![image](https://github.com/user-attachments/assets/01c1ed8c-ea7a-46ff-af9d-0332dc08a1f2)
+#### Estado de carga
+![image](https://github.com/user-attachments/assets/85194dca-c800-43f8-8884-3e880812c2d6)
+#### Validaciónes
+![image](https://github.com/user-attachments/assets/7cefebe8-db1f-4277-910d-8d8b3e6038a5)
+![image](https://github.com/user-attachments/assets/8c6d75dd-3f6b-45e1-934c-03be0b1f6032)
+![image](https://github.com/user-attachments/assets/9e21a5bd-0dcc-4bad-99e1-53bdfce977fc)
+
+
+
