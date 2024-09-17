@@ -3,23 +3,76 @@ TODO => Agregar filtros al segundo carrousel
 TODO => Eliminación de usuarios
 TODO => Cambiar font de la alert a Inter
 TODO => Crear carrousel de img en detail
-TODO => Hacer funcionar los carrouseles
 
-<!-- {
-    "id": "5128df48-79fc-4f0f-8b52-d06be54d0cec",
-    "name": "(405) Brewing Co",
-    "brewery_type": "micro",
-    "address_1": "1716 Topeka St",
-    "address_2": null,
-    "address_3": null,
-    "city": "Norman",
-    "state_province": "Oklahoma",
-    "postal_code": "73069-8224",
-    "country": "United States",
-    "longitude": "-97.46818222",
-    "latitude": "35.25738891",
-    "phone": "4058160490",
-    "website_url": "http://www.405brewing.com",
-    "state": "Oklahoma",
-    "street": "1716 Topeka St"
-} -->
+# Cómo empezar
+
+Cloná el repositorio en tu carpeta:
+
+```bash
+git clone https://github.com/TomasSorgetti/todosgamers-challenge-front.git
+```
+
+Entrá en la carpeta del proyecto e instalá las dependencias
+
+```bash
+cd todosgamers-challenge-front
+npm install
+```
+
+Para abrir en tu ide:
+
+```bash
+code .
+```
+
+Creá un archivo .env.local en la carpeta principal del proyecto con las siguientes varibales
+
+```bash
+NEXT_PUBLIC_BREWERIES_API_URL=https://api.openbrewerydb.org/v1/breweries
+NEXT_PUBLIC_BACKEND_URL=http://localhost:8080/api/v1
+NEXTAUTH_SECRET=password_de_ejemplo
+```
+
+Iniciá el proyecto con el siguiente comando:
+
+```bash
+npm run dev
+```
+
+Seguí las indicaciónes del backend para que funcione la aplicación completa.
+
+Repositorio del Backend
+
+## Arquitectura del Frontend
+
+```bash
+    client/
+    ├── src/
+    │   ├── app/
+    │   │      ├── api/
+    │   │      ├── fonts/
+    │   │      ├── page/
+    │   │      ├── layout.tsx
+    │   │      └── page.tsx
+    │   ├── assets/
+    │   ├── components/
+    │   │      ├── forms/
+    │   │      ├── layout/
+    │   │      └── ui/
+    │   ├── interfaces/
+    │   ├── lib/
+    │   ├── providers/
+    │   │      ├── AppProviders.tsx
+    │   │      └── rest_of_providers...
+    │   ├── services/
+    │   │      ├── api.ts
+    │   │      ├── auth.ts
+    │   │      └── comments.mock.ts
+    │   │
+    │   └── utils/
+    │
+    ├── .env.local
+    └── ...resto_de_archivos_config
+```
+
+## Diseño de la aplicación
