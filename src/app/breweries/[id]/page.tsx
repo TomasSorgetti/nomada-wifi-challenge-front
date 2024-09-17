@@ -5,6 +5,7 @@ import { formatPhone } from "@/utils/phoneUtils";
 import locationIcon from "@/assets/icons/location.svg";
 import phoneIcon from "@/assets/icons/phone.svg";
 import IconLabel from "@/components/ui/iconLabel/IconLabel";
+import Comments from "@/components/layout/comments/Comments";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const brewerie = await getBreweryById(params.id);
@@ -32,6 +33,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           <IconLabel icon={locationIcon}>{completeLocation}</IconLabel>
           <IconLabel icon={phoneIcon}>{formatedPhone}</IconLabel>
         </div>
+        <Comments />
       </main>
     </>
   );

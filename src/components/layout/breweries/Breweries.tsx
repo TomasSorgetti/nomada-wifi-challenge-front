@@ -33,6 +33,7 @@ export default function Breweries() {
     fetchData();
   }, [dispatch, breweries, californiaBreweries]);
 
+  //TODO => Debería de agregar un estado de error. Si no hay datos, debería de mostrar un error y no los skelletons.
   return (
     <div className={styles.container}>
       <h1>Todas las opciones</h1>
