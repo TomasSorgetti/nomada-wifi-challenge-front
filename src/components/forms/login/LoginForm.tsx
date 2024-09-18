@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import styles from "./LoginForm.module.css";
 import FormField from "@/components/ui/formField/FormField";
-import Button from "@/components/ui/button/Button";
+import CustomButton from "@/components/ui/button/Button";
 import GoogleButton from "@/components/ui/googleButton/GoogleButton";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
@@ -79,9 +79,9 @@ export default function LoginForm() {
           <input type="checkbox" name="persist" id="persist" />
           <label htmlFor="persist">Recordarme</label>
         </div>
-        <Button stroked={true} variant="large" disabled={isLoading}>
+        <CustomButton stroked={true} variant="large" disabled={isLoading}>
           Iniciar Sesión
-        </Button>
+        </CustomButton>
         <p className={styles.forgotPassword}>
           ¿Olvidaste tu contraseña? <Link href="#">Cambiar contraseña</Link>
         </p>

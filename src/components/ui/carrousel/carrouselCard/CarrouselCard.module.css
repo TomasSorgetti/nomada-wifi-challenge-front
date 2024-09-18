@@ -11,6 +11,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
+  color: var(--lightTextColor);
 }
 .card h2 {
   font-weight: 700;
@@ -21,7 +22,7 @@
 .cardContent {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   gap: 0.5rem;
 }
 .cardImg {

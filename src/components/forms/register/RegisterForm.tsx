@@ -4,7 +4,7 @@
 import React, { useState } from "react";
 import styles from "./RegisterForm.module.css";
 import FormField from "@/components/ui/formField/FormField";
-import Button from "@/components/ui/button/Button";
+import CustomButton from "@/components/ui/button/Button";
 import GoogleButton from "@/components/ui/googleButton/GoogleButton";
 import Link from "next/link";
 import { authService } from "@/services/auth";
@@ -94,9 +94,9 @@ export default function RegisterForm() {
             error={dataErrors.confirm}
           />
         </>
-        <Button stroked={false} variant="large" disabled={isLoading}>
+        <CustomButton stroked={false} variant="large" disabled={isLoading}>
           Registrarse
-        </Button>
+        </CustomButton>
         <p className={styles.login}>
           ¿Ya tienes una cuenta? <Link href="/login">Iniciar sesión</Link>
         </p>

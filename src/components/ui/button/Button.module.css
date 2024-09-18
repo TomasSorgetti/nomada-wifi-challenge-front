@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  cursor: pointer;
 }
 .button.small {
   max-width: 244px;

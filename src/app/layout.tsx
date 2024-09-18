@@ -23,8 +23,8 @@ export default function RootLayout({
     <html lang="es">
       <body className={`${roboto.variable}`}>
         <AppProviders>
-            {children}
-            <Footer />
+          {children}
+          <Footer />
         </AppProviders>
       </body>
     </html>
