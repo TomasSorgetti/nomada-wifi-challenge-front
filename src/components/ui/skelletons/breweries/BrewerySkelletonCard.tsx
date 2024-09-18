@@ -1,9 +1,9 @@
-import Skeleton from "@mui/material/Skeleton";
+// import Skeleton from "@mui/material/Skeleton";
 import styles from "./BrewerySkelletonCard.module.css";
 const BrewerySkelletonCard = () => {
   return (
     <div className={styles.card}>
-      <Skeleton
+      {/* <Skeleton
         animation="wave"
         variant="rounded"
         width={328}
@@ -65,7 +65,7 @@ const BrewerySkelletonCard = () => {
             }}
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

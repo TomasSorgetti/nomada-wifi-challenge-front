@@ -5,8 +5,9 @@ import { formatPhone } from "@/utils/phoneUtils";
 import locationIcon from "@/assets/icons/location.svg";
 import phoneIcon from "@/assets/icons/phone.svg";
 import IconLabel from "@/components/ui/iconLabel/IconLabel";
-import Button from "@/components/ui/button/Button";
+import CustomButton from "@/components/ui/button/Button";
 import Comments from "@/components/layout/comments/Comments";
+import DetailSwiper from "@/components/ui/detailSwiper/DetailSwiper";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const brewerie = await getBreweryById(params.id);
@@ -34,13 +35,14 @@ export default async function Page({ params }: { params: { id: string } }) {
           <IconLabel icon={locationIcon}>{completeLocation}</IconLabel>
           <IconLabel icon={phoneIcon}>{formatedPhone}</IconLabel>
         </div>
+        <DetailSwiper />
         <h2>Opiniones</h2>
         <Comments />
         <div className={styles.buttonsContainer}>
-          <Button variant="large">Reservar mesa</Button>
-          <Button stroked={true} variant="large">
+          <CustomButton variant="large">Reservar mesa</CustomButton>
+          <CustomButton stroked={true} variant="large">
             Opciones de transporte
-          </Button>
+          </CustomButton>
         </div>
       </main>
     </>

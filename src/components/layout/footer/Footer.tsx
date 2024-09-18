@@ -2,11 +2,10 @@
 
 import Link from "next/link";
 import styles from "./Footer.module.css";
-import HomeIcon from "@mui/icons-material/Home";
-import Image from "next/image";
-import calendarIcon from "../../../assets/icons/calendar.svg";
-import chatIcon from "../../../assets/icons/chat.svg";
 import { usePathname } from "next/navigation";
+import { MdHomeFilled } from "react-icons/md";
+import { IoCalendarOutline } from "react-icons/io5";
+import { HiOutlineChatBubbleOvalLeft } from "react-icons/hi2";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -16,15 +15,15 @@ export default function Footer() {
         href="/calendar"
         className={pathname === "/calendar" ? styles.active : ""}
       >
-        <Image src={calendarIcon} alt="Calendar icon" />
+        <IoCalendarOutline size={24} />
         Calendario
       </Link>
       <Link href="/" className={pathname === "/" ? styles.active : ""}>
-        <HomeIcon sx={{ fontSize: 24 }} />
+        <MdHomeFilled size={24} />
         Inicio
       </Link>
       <Link href="/chat" className={pathname === "/chat" ? styles.active : ""}>
-        <Image src={chatIcon} alt="Chat icon" />
+        <HiOutlineChatBubbleOvalLeft size={24} />
         Chat
       </Link>
     </footer>

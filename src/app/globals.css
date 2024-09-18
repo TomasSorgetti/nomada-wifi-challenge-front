@@ -26,9 +26,11 @@
 }
 
 body {
-  background-color: var(--background);
   color: var(--lightTextColor);
   font-family: var(--font-roboto);
+}
+main {
+  background-color: var(--background);
 }
 
 h1 {

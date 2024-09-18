@@ -9,7 +9,7 @@ interface ButtonProps {
   href?: string;
 }
 
-export default function Button({
+export default function CustomButton({
   children,
   stroked,
   variant,

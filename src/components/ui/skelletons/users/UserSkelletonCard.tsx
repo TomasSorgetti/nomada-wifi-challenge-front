@@ -1,10 +1,10 @@
 import styles from "./UserSkelletonCard.module.css";
-import Skeleton from "@mui/material/Skeleton";
+// import Skeleton from "@mui/material/Skeleton";
 
 export default function UserSkelletonCard() {
   return (
     <div className={styles.card}>
-      <div className={styles.userInfo}>
+      {/* <div className={styles.userInfo}>
         <div className={styles.avatarCont}>
           <Skeleton
             variant="circular"
@@ -54,7 +54,7 @@ export default function UserSkelletonCard() {
             bgcolor: "var(--lightSkelletonColor)",
           }}
         />
-      </div>
+      </div> */}
     </div>
   );
 }

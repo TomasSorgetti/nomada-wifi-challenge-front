@@ -1,6 +1,5 @@
 import React from "react";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
-
+import { ChakraProvider } from "@chakra-ui/react";
 import StoreProvider from "./StoreProvider";
 import SessionAuthProvider from "./SessionAuthProvider";
 const AppProviders: React.FC<{ children: React.ReactNode }> = ({
@@ -9,7 +8,7 @@ const AppProviders: React.FC<{ children: React.ReactNode }> = ({
   return (
     <StoreProvider>
       <SessionAuthProvider>
-        <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
+        <ChakraProvider>{children}</ChakraProvider>
       </SessionAuthProvider>
     </StoreProvider>
   );
