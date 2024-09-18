@@ -1,0 +1,4 @@
+.ratioContainer {
+  display: flex;
+  flex-wrap: wrap;
+}

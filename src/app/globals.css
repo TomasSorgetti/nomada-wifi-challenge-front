@@ -25,11 +25,9 @@
   margin: 0;
 }
 
-body {
+main {
   color: var(--lightTextColor);
   font-family: var(--font-roboto);
-}
-main {
   background-color: var(--background);
 }
 
