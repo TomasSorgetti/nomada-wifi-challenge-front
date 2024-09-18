@@ -5,6 +5,7 @@
   margin-bottom: 1.2rem;
   width: 100%;
   position: relative;
+  font-family: var(--font-roboto);
 }
 .formField label {
   font-weight: 600;
@@ -15,6 +16,8 @@
   border: 1px solid #ccc;
   border-radius: 8px;
   height: 48px;
+  color: var(--darkTextColor);
+  background-color: white;
 }
 .errorField input {
   border: 1px solid var(--errorColor);

@@ -13,7 +13,7 @@ export interface IBrewery {
 }
 export interface IBreweriesState {
   breweries: IBrewery[];
-  californiaBreweries: IBrewery[];
+  filteredBreweries: IBrewery[];
   brewery: IBrewery;
   isLoading: boolean;
 }
