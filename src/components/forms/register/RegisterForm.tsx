@@ -10,6 +10,7 @@ import Link from "next/link";
 import { authService } from "@/services/auth";
 import { useRouter } from "next/navigation";
 import ProgressBar from "@/components/ui/progressBar/ProgressBar";
+import { registerValidation } from "./register.validation";
 
 //* Main function
 export default function RegisterForm() {
@@ -28,11 +29,15 @@ export default function RegisterForm() {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setData({ ...data, [name]: value });
+    setDataErrors({ ...dataErrors, [name]: "" });
   };
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // TODO agregar errores en la condicion y hacer validaciones
-    const condition = data.email && data.password && data.confirm;
+    registerValidation({ data, dataErrors, setDataErrors });
+    const condition =
+      dataErrors.email === "" &&
+      dataErrors.password === "" &&
+      dataErrors.confirm === "";
     if (condition) {
       setIsLoading(true);
       try {
@@ -40,12 +45,10 @@ export default function RegisterForm() {
           email: data.email,
           password: data.password,
         });
-        // TODO sacar el console
-        console.log(response);
         if (response.status === 400) {
           setDataErrors({
             ...dataErrors,
-            email: "Email already in use",
+            email: "This email is already taken",
           });
         }
         if (response.status === 201) {

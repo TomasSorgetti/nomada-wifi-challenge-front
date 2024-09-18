@@ -6,22 +6,14 @@ import { useAppSelector } from "@/lib/hooks";
 import BreweriesFilter from "@/components/forms/breweries/BreweriesFilter";
 
 export default function BreweriesFiltered() {
-  const { filteredBreweries, isLoading } = useAppSelector(
+  const { filteredBreweries } = useAppSelector(
     (state: { breweries: IBreweriesState }) => state.breweries
   );
-
-  // useEffect(() => {
-  //   dispatch(fetchCaliforniaBreweries());
-  // }, [dispatch]);
 
   return (
     <div className={styles.container}>
       <BreweriesFilter />
-      {!isLoading && filteredBreweries.length === 0 ? (
-        <div>No se encontraron resultados</div>
-      ) : (
-        <Carrousel data={filteredBreweries} />
-      )}
+      <Carrousel data={filteredBreweries} />
     </div>
   );
 }

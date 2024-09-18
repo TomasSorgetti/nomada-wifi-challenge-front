@@ -27,10 +27,18 @@ export default function Carrousel({ data }: CarrouselProps) {
         ))
       ) : (
         <>
-          <BrewerySkelletonCard />
-          <BrewerySkelletonCard />
-          <BrewerySkelletonCard />
-          <BrewerySkelletonCard />
+          <SwiperSlide style={{ width: "328px", marginRight: "1rem" }}>
+            <BrewerySkelletonCard />
+          </SwiperSlide>
+          <SwiperSlide style={{ width: "328px" }}>
+            <BrewerySkelletonCard />
+          </SwiperSlide>
+          <SwiperSlide style={{ width: "328px" }}>
+            <BrewerySkelletonCard />
+          </SwiperSlide>
+          <SwiperSlide style={{ width: "328px" }}>
+            <BrewerySkelletonCard />
+          </SwiperSlide>
         </>
       )}
     </Swiper>

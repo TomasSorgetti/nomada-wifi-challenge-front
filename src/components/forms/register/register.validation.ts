@@ -1,38 +1,63 @@
-export const registerValidation = (data: {
+interface IData {
   email: string;
   password: string;
   confirm: string;
-}) => {
-  const errors = {
-    email: "",
-    password: "",
-    confirm: "",
-  };
-  // Email validation
-  if (!data.email) {
-    errors.email = "Email is required";
+}
+
+interface IRegisterErrors {
+  data: IData;
+  dataErrors: IData;
+  setDataErrors: React.Dispatch<React.SetStateAction<IData>>;
+}
+
+export const registerValidation = ({
+  data,
+  dataErrors,
+  setDataErrors,
+}: IRegisterErrors) => {
+  let hasErrors = false;
+  const newErrors: IData = { ...dataErrors };
+
+  //* Email validation
+  if (data.email.trim() === "") {
+    newErrors.email = "Email is required";
+    hasErrors = true;
   } else if (!/\S+@\S+\.\S+/.test(data.email)) {
-    errors.email = "Email is invalid";
+    newErrors.email = "Email is invalid";
+    hasErrors = true;
   } else {
-    errors.email = "";
+    newErrors.email = "";
   }
 
-  // Password validation
-  if (!data.password) {
-    errors.password = "Password is required";
+  //* Password validation
+  if (data.password.trim() === "") {
+    newErrors.password = "Password is required";
+    hasErrors = true;
   } else if (data.password.length < 5) {
-    errors.password = "Password must be at least 6 characters";
+    newErrors.password = "Password must be at least 5 characters";
+    hasErrors = true;
   } else {
-    errors.password = "";
+    newErrors.password = "";
   }
 
-  // Confirm password validation
-  if (!data.confirm) {
-    errors.confirm = "Please confirm your password";
+  //* Confirm password validation
+  if (data.confirm.trim() === "") {
+    newErrors.confirm = "Please confirm your password";
+    hasErrors = true;
   } else if (data.confirm !== data.password) {
-    errors.confirm = "Passwords do not match";
+    newErrors.confirm = "Passwords do not match";
+    hasErrors = true;
   } else {
-    errors.confirm = "";
+    newErrors.confirm = "";
   }
-  return errors;
+
+  if (hasErrors) {
+    setDataErrors(newErrors);
+  } else {
+    setDataErrors({
+      email: "",
+      password: "",
+      confirm: "",
+    });
+  }
 };
