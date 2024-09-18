@@ -1,71 +1,53 @@
-// import Skeleton from "@mui/material/Skeleton";
-import { Skeleton, Stack } from "@chakra-ui/react";
+import { Skeleton, Stack, SkeletonCircle } from "@chakra-ui/react";
 import styles from "./BrewerySkelletonCard.module.css";
 const BrewerySkelletonCard = () => {
   return (
-    <Stack className={styles.card}>
+    <Stack
+      style={{
+        width: "328px",
+        padding: "1rem",
+        backgroundColor: "var(--darkSkelletonColor)",
+        borderRadius: "8px",
+      }}
+    >
       <Skeleton
-        animation="wave"
-        variant="rounded"
-        width={328}
-        height={191}
-        sx={{
-          bgcolor: "var(--darkSkelletonColor)",
-          radius: "8px",
-          minWidth: 328,
-        }}
+        height="20px"
+        width="160px"
+        startColor="var(--lightSkelletonColor)"
+        endColor="var(--darkSkelletonColor)"
+        className={styles.skelleton}
       />
-      <div className={styles.contentContainer}>
-        <Skeleton
-          animation="wave"
-          variant="text"
-          width={120}
-          height={32}
-          sx={{
-            bgcolor: "var(--lightSkelletonColor)",
-          }}
+      <div className={styles.info}>
+        <SkeletonCircle
+          size="71"
+          startColor="var(--lightSkelletonColor)"
+          endColor="var(--darkSkelletonColor)"
         />
-        <div className={styles.infoContainer}>
+        <div className={styles.infoContent}>
           <Skeleton
-            variant="circular"
-            width={71}
-            height={71}
-            sx={{
-              bgcolor: "var(--lightSkelletonColor)",
-            }}
+            height="20px"
+            width="160px"
+            startColor="var(--lightSkelletonColor)"
+            endColor="var(--darkSkelletonColor)"
+            className={styles.skelleton}
           />
-          <div>
-            <Skeleton
-              animation="wave"
-              variant="text"
-              width={120}
-              height={32}
-              sx={{
-                bgcolor: "var(--lightSkelletonColor)",
-              }}
-            />
-            <Skeleton
-              animation="wave"
-              variant="text"
-              width={120}
-              height={32}
-              sx={{
-                bgcolor: "var(--lightSkelletonColor)",
-              }}
-            />
-          </div>
-        </div>
-        <div className={styles.buttonContainer}>
           <Skeleton
-            animation="wave"
-            variant="text"
-            width={244}
-            height={58}
-            sx={{
-              bgcolor: "var(--lightSkelletonColor)",
-            }}
+            height="20px"
+            width="90px"
+            startColor="var(--lightSkelletonColor)"
+            endColor="var(--darkSkelletonColor)"
+            className={styles.skelleton}
           />
         </div>
+      </div>
+      <div className={styles.buttonCont}>
+        <Skeleton
+          height="32px"
+          width="244px"
+          startColor="var(--lightSkelletonColor)"
+          endColor="var(--darkSkelletonColor)"
+          className={`${styles.button} ${styles.skelleton}`}
+        />
       </div>
     </Stack>
   );

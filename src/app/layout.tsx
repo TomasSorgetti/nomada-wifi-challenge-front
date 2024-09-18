@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${roboto.variable}`}>
+      <body id="body" className={`${roboto.variable}`}>
         <AppProviders>
           {children}
           <Footer />

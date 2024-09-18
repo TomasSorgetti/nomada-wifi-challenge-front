@@ -2,10 +2,10 @@ import MainNavbar from "@/components/layout/mainNavbar/MainNavbar";
 
 const page = () => {
   return (
-    <div>
+    <main>
       <MainNavbar />
       <h1>Chat Page</h1>
-    </div>
+    </main>
   );
 };
 

@@ -45,36 +45,30 @@ export const BreweriesSlice = createSlice({
     },
     filterBreweries: (state, action) => {
       const { filter, search } = action.payload;
-      state.isLoading = true;
 
       switch (filter) {
         case "by_name":
-          state.isLoading = false;
           state.filteredBreweries = state.breweries.filter((brewery) =>
             brewery.name.toLowerCase().includes(search.toLowerCase())
           );
           break;
         case "by_city":
-          state.isLoading = false;
           state.filteredBreweries = state.breweries.filter((brewery) =>
             brewery.city.toLowerCase().includes(search.toLowerCase())
           );
           break;
         case "by_country":
-          state.isLoading = false;
           state.filteredBreweries = state.breweries.filter((brewery) =>
             brewery.country.toLowerCase().includes(search.toLowerCase())
           );
           break;
         case "by_state":
-          state.isLoading = false;
           state.filteredBreweries = state.breweries.filter((brewery) =>
             brewery.state.toLowerCase().includes(search.toLowerCase())
           );
           break;
 
         default:
-          state.isLoading = false;
           state.filteredBreweries = [...state.breweries];
           break;
       }
@@ -98,24 +92,24 @@ export const BreweriesSlice = createSlice({
       })
       .addCase(fetchBreweries.rejected, (state) => {
         state.isLoading = false;
-      })
-      // //*   California Breweries
-      // .addCase(fetchCaliforniaBreweries.pending, (state) => {
-      //   state.isLoading = true;
-      // })
-      // .addCase(fetchCaliforniaBreweries.fulfilled, (state, action) => {
-      //   const newData = action.payload;
+      });
+    // //*   California Breweries
+    // .addCase(fetchCaliforniaBreweries.pending, (state) => {
+    //   state.isLoading = true;
+    // })
+    // .addCase(fetchCaliforniaBreweries.fulfilled, (state, action) => {
+    //   const newData = action.payload;
 
-      //   if (
-      //     JSON.stringify(state.filteredBreweries) !== JSON.stringify(newData)
-      //   ) {
-      //     state.isLoading = false;
-      //     state.filteredBreweries = newData;
-      //   }
-      // })
-      // .addCase(fetchCaliforniaBreweries.rejected, (state) => {
-      //   state.isLoading = false;
-      // });
+    //   if (
+    //     JSON.stringify(state.filteredBreweries) !== JSON.stringify(newData)
+    //   ) {
+    //     state.isLoading = false;
+    //     state.filteredBreweries = newData;
+    //   }
+    // })
+    // .addCase(fetchCaliforniaBreweries.rejected, (state) => {
+    //   state.isLoading = false;
+    // });
   },
 });
 
