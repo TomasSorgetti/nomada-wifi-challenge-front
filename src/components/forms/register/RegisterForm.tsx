@@ -34,16 +34,18 @@ export default function RegisterForm() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     registerValidation({ data, dataErrors, setDataErrors });
-    const condition =
-      dataErrors.email === "" &&
-      dataErrors.password === "" &&
-      dataErrors.confirm === "";
-    if (condition) {
+
+    const hasErrors = Object.values(dataErrors).some((error) => error !== "");
+    const isDataFilled = Object.values(data).every(
+      (value) => value.trim() !== ""
+    );
+
+    if (!hasErrors && isDataFilled) {
       setIsLoading(true);
       try {
         const response = await authService("register", {
-          email: data.email,
-          password: data.password,
+          email: data.email.trim(),
+          password: data.password.trim(),
         });
         if (response.status === 400) {
           setDataErrors({
@@ -100,9 +102,9 @@ export default function RegisterForm() {
         <CustomButton stroked={false} variant="large" disabled={isLoading}>
           Registrarse
         </CustomButton>
-        <p className={styles.login}>
+        <div className={styles.login}>
           ¿Ya tienes una cuenta? <Link href="/login">Iniciar sesión</Link>
-        </p>
+        </div>
         <div className={styles.divider}></div>
         <GoogleButton>Continuar con Google</GoogleButton>
       </form>

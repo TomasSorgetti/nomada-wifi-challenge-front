@@ -1,6 +1,5 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import { Progress } from "@chakra-ui/react";
+import { Box, Progress } from "@chakra-ui/react";
 
 export default function LinearIndeterminate({ loading }: { loading: boolean }) {
   return (
