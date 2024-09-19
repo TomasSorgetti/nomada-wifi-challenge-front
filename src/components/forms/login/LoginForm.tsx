@@ -15,6 +15,7 @@ export default function LoginForm() {
   const [data, setData] = useState({
     email: "",
     password: "",
+    persist: false,
   });
   const [dataError, setDataError] = useState("");
 
@@ -23,7 +24,9 @@ export default function LoginForm() {
     const { name, value } = event.target;
     setData({ ...data, [name]: value });
   };
-
+  const handleCheck = () => {
+    setData({ ...data, persist: !data.persist });
+  };
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (data.email && data.password) {
@@ -76,21 +79,21 @@ export default function LoginForm() {
           />
         </>
         <div className={styles.rememberMe}>
-          <input type="checkbox" name="persist" id="persist" />
+          <input type="checkbox" name="persist" id="persist" onChange={handleCheck} />
           <label htmlFor="persist">Recordarme</label>
         </div>
         <CustomButton stroked={true} variant="large" disabled={isLoading}>
           Iniciar Sesión
         </CustomButton>
-        <p className={styles.forgotPassword}>
+        <div className={styles.forgotPassword}>
           ¿Olvidaste tu contraseña? <Link href="#">Cambiar contraseña</Link>
-        </p>
+        </div>
         <div className={styles.divider}></div>
         <GoogleButton>Continuar con Google</GoogleButton>
-        <p className={styles.register}>
+        <div className={styles.register}>
           ¿Todavía no tienes una cuenta?{" "}
           <Link href="/register">Registrarse</Link>
-        </p>
+        </div>
       </form>
     </>
   );

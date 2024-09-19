@@ -17,6 +17,8 @@
 }
 .infoContainer h1 {
   margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
 }
 .buttonsContainer {
   padding: 0 1rem;

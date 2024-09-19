@@ -26,7 +26,7 @@ export const getCommentsByBreweryId = async (): Promise<IComment[]> => {
     setTimeout(() => {
       if (false) reject("error");
       resolve(commentsMock);
-    }, 400);
+    }, 200);
   });
 
   return response;
