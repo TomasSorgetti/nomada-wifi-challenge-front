@@ -60,4 +60,5 @@ export const registerValidation = ({
       confirm: "",
     });
   }
+  return hasErrors;
 };

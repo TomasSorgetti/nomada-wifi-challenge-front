@@ -10,7 +10,7 @@ import Link from "next/link";
 import { authService } from "@/services/auth";
 import { useRouter } from "next/navigation";
 import ProgressBar from "@/components/ui/progressBar/ProgressBar";
-import { registerValidation } from "./register.validation";
+import { validateRegister } from "./validate";
 
 //* Main function
 export default function RegisterForm() {
@@ -31,36 +31,37 @@ export default function RegisterForm() {
     setData({ ...data, [name]: value });
     setDataErrors({ ...dataErrors, [name]: "" });
   };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    registerValidation({ data, dataErrors, setDataErrors });
+    const errors = validateRegister(data);
+    setDataErrors(errors);
 
-    const hasErrors = Object.values(dataErrors).some((error) => error !== "");
-    const isDataFilled = Object.values(data).every(
-      (value) => value.trim() !== ""
-    );
+    const hasErrors = Object.values(errors).some((error) => error !== "");
+    if (hasErrors) {
+      return;
+    }
 
-    if (!hasErrors && isDataFilled) {
-      setIsLoading(true);
-      try {
-        const response = await authService("register", {
-          email: data.email.trim(),
-          password: data.password.trim(),
+    setIsLoading(true);
+    try {
+      const response = await authService("register", {
+        email: data.email.trim(),
+        password: data.password.trim(),
+      });
+      if (response.status === 400) {
+        setDataErrors({
+          ...dataErrors,
+          email: "This email is already taken",
         });
-        if (response.status === 400) {
-          setDataErrors({
-            ...dataErrors,
-            email: "This email is already taken",
-          });
-        }
-        if (response.status === 201) {
-          router.push("/login");
-        }
-      } catch (error) {
-        console.log("Error register form", error);
-      } finally {
-        setIsLoading(false);
+        return;
       }
+      if (response.status === 201) {
+        router.push("/login");
+      }
+    } catch (error) {
+      console.log("Error register form", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
