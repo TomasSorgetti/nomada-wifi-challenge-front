@@ -33,9 +33,9 @@ Iniciá el proyecto con el siguiente comando:
 npm run dev
 ```
 
-Seguí las indicaciónes del backend para que funcione la aplicación completa.
+Seguí las indicaciónes del Backend para que funcione la aplicación completa.
 
-Repositorio del Backend
+[Repositorio del Backend](https://github.com/TomasSorgetti/nomada-wifi-challenge-server)
 
 ## Arquitectura del Frontend
 
