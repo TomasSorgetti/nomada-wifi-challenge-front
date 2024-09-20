@@ -1,0 +1,12 @@
+.main {
+  padding: 0 1rem;
+}
+.main h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.0437rem;
+  margin: 1.8rem 0;
+}
+.infoContainer {
+  margin-bottom: 2rem;
+}

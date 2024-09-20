@@ -1,5 +1,11 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import {
+  ICredentials,
+  IAuthorize,
+  AuthenticatedUser,
+  IToken,
+} from "@/interfaces/next-auth.d";
 
 //TODO => Solucionar este quilombo en typescript y cambiar los any a los correctos
 const handler = NextAuth({
@@ -14,7 +20,9 @@ const handler = NextAuth({
         },
         password: { label: "Password:", type: "password" },
       },
-      async authorize(credentials) {
+      async authorize(
+        credentials: ICredentials | undefined
+      ): Promise<IAuthorize | null> {
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`,
           {
@@ -29,32 +37,36 @@ const handler = NextAuth({
 
         const response = await res.json();
 
-        if (res.status !== 200) throw response;
+        if (res.status !== 201 && res.status !== 200) throw response;
 
         return {
-          user: response.user,
+          user: {
+            id: response.user.id,
+            email: response.user.email,
+          },
           accessToken: response.accessToken,
           refreshToken: response.refreshToken,
-          expiresIn: response.expiresIn,
+          expiresIn: Date.now() + (response.expiresIn || 0) * 1000,
         };
       },
     }),
   ],
   callbacks: {
-    async jwt({ token, user }: any) {
+    async jwt({ token, user }: { token: IToken; user: IAuthorize }) {
       if (user) {
         token.accessToken = user.accessToken;
         token.refreshToken = user.refreshToken;
-        token.accessTokenExpires = Date.now() + user.expiresIn * 1000;
+        token.expiresIn = user.expiresIn;
+        token.user = user.user;
       }
 
-      if (Date.now() < token.accessTokenExpires) {
+      if (Date.now() < (token.expiresIn || 0)) {
         return token;
       }
 
       return refreshAccessToken(token);
     },
-    async session({ session, token }: any) {
+    async session({ session, token }: { session: IToken; token: IToken }) {
       session.user = token.user;
       session.accessToken = token.accessToken;
       session.expiresIn = token.expiresIn;
@@ -68,7 +80,7 @@ const handler = NextAuth({
   },
 });
 
-async function refreshAccessToken(token: any) {
+async function refreshAccessToken(token: IToken) {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/refresh`,

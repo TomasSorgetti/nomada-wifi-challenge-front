@@ -1,4 +1,3 @@
-
 import {
   IAuthCredentials,
   ILogin,
@@ -33,17 +32,20 @@ export const loginService = async ({ email, password, persist }: ILogin) => {
 };
 
 export const deleteUserService = async ({
-  email,
+  accessToken,
   password,
-}: IAuthCredentials) => {
-  const response = await fetch(`${BASE_URL}/users`, {
+}: {
+  accessToken: string;
+  password: string;
+}) => {
+  return await fetch(`${BASE_URL}/users`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
       "Access-Control-Allow-Origin": "*",
+      Authorization: `Bearer ${accessToken}`,
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ password }),
   });
-  return await response.json();
 };

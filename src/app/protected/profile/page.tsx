@@ -1,10 +1,11 @@
 "use client";
 
+import styles from "./page.module.css";
 import SecondaryNavbar from "@/components/layout/secondaryNavbar/SecondaryNavbar";
-import { deleteUserService } from "@/services/auth";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import ProgressBar from "@/components/ui/progressBar/ProgressBar";
+import DeleteUser from "@/components/forms/deleteUser/DeleteUser";
 
 export default function Profile() {
   const { data: session, status } = useSession();
@@ -41,35 +42,24 @@ export default function Profile() {
     }
   }, [status, session?.accessToken]);
 
-  //TODO PEDIR CONTRASEÑA PARA ELIMINAR
-  const handleDeleteUser = async () => {
-    if (confirm("Are you sure?")) {
-      setIsLoading(true);
-      try {
-        const response = await deleteUserService({
-          email: user.email,
-          password: "admin",
-        });
-        console.log("DELETE USER RESPONSE", response);
-      } catch (error) {
-        console.log("Error deleting user", error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-  };
-
-  console.log(userData);
-
   return (
     <>
       <SecondaryNavbar />
       <ProgressBar loading={status === "loading" || isLoading} />
-      <main>
-        <h1>Hola</h1>
-        {/* <p>Tu email es {user?.email}</p>
-        <p>Tu rol es de {user?.roles?.name}</p> */}
-        <button onClick={handleDeleteUser}>Delete user</button>
+      <main className={styles.main}>
+        <h1>Perfil de usuario</h1>
+        <div className={styles.infoContainer}>
+          {isLoading ? (
+            <div>Cargando...</div>
+          ) : (
+            <>
+              <p>email: {userData?.email}</p>
+              <p>id: {userData?.id}</p>
+              <p>rol: {userData?.roles.name}</p>
+              <DeleteUser />
+            </>
+          )}
+        </div>
       </main>
     </>
   );
