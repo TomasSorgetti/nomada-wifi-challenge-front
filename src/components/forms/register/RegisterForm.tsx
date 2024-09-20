@@ -48,6 +48,9 @@ export default function RegisterForm() {
         email: data.email.trim(),
         password: data.password.trim(),
       });
+      const res = await response.json();
+      console.log(response);
+      console.log(res);
       if (response.status === 400) {
         setDataErrors({
           ...dataErrors,

@@ -19,7 +19,9 @@ import { useRouter } from "next/navigation";
 export default function AuthIcons() {
   const router = useRouter();
   const { data: session } = useSession();
-
+  const handleLogout = async () => {
+    await signOut({ redirect: true, callbackUrl: "/login" });
+  };
   return (
     <div className={styles.container}>
       <Image src={BellIcon} alt="Bell icon" />
@@ -41,13 +43,7 @@ export default function AuthIcons() {
                 >
                   Perfil
                 </MenuItem>
-                <MenuItem
-                  onClick={() => {
-                    signOut();
-                  }}
-                >
-                  Cerrar Sesión
-                </MenuItem>
+                <MenuItem onClick={handleLogout}>Cerrar Sesión</MenuItem>
               </div>
             ) : (
               <div>
