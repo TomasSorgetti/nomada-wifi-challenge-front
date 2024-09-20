@@ -42,10 +42,11 @@ export default function DeleteUser() {
     event.preventDefault();
 
     if (
-      formData.password &&
-      formData.confirm &&
-      confirmError === "" &&
-      status === "authenticated"
+      (formData.password &&
+        formData.confirm &&
+        confirmError === "" &&
+        status === "authenticated",
+      session?.accessToken)
     ) {
       setIsLoading(true);
       try {
@@ -61,7 +62,7 @@ export default function DeleteUser() {
           return;
         }
         if (response.status === 200 || response.status === 201) {
-            signOut();
+          signOut();
         }
       } catch (err) {
         console.log("Error deleting user:", err);
