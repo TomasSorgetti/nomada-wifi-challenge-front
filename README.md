@@ -1,12 +1,9 @@
-TODO => Eliminación de usuarios
-TODO => Fix los skeletons de los comentarios
-
 # Cómo empezar
 
 Cloná el repositorio en tu carpeta:
 
 ```bash
-git clone https://github.com/TomasSorgetti/todosgamers-challenge-front.git
+git clone https://github.com/TomasSorgetti/nomada-wifi-challenge-front.git
 ```
 
 Entrá en la carpeta del proyecto e instalá las dependencias
@@ -44,29 +41,29 @@ Repositorio del Backend
 
 ```bash
     client/
-    ├── src/
-    │   ├── app/
-    │   │      ├── api/
-    │   │      ├── fonts/
-    │   │      ├── page/
+    ├── src/                                #carpeta donde estan los archivos principales de la aplicación
+    │   ├── app/                            #carpeta donde estan las páginas
+    │   │      ├── api/                         #api de next
+    │   │      ├── fonts/                       
+    │   │      ├── page/                        #una carpeta con un archivo page.tsx por cada página
     │   │      ├── layout.tsx
     │   │      └── page.tsx
-    │   ├── assets/
-    │   ├── components/
-    │   │      ├── forms/
-    │   │      ├── layout/
-    │   │      └── ui/
-    │   ├── interfaces/
-    │   ├── lib/
-    │   ├── providers/
-    │   │      ├── AppProviders.tsx
+    │   ├── assets/                         #imágenes e iconos
+    │   ├── components/                     #componentes
+    │   │      ├── forms/                       #formularios
+    │   │      ├── layout/                      #componentes de layaut
+    │   │      └── ui/                          #componentes reutilizables
+    │   ├── interfaces/                     #interfaces
+    │   ├── lib/                            #redux
+    │   ├── providers/                      #carpeta con todos los providers para importar en layaut
+    │   │      ├── AppProviders.tsx             #provider principal
     │   │      └── rest_of_providers...
-    │   ├── services/
+    │   ├── services/                       #servicios para llamadas a apis
     │   │      ├── api.ts
     │   │      ├── auth.ts
-    │   │      └── comments.mock.ts
+    │   │      └── comments.mock.ts             #un mock de comentarios para simular una llamada a una api
     │   │
-    │   └── utils/
+    │   └── utils/                          #funciones utiles que pueden ser reutilizables
     │
     ├── .env.local
     └── ...resto_de_archivos_config
