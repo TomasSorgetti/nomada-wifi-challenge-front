@@ -1,21 +1,23 @@
-import { User } from "next-auth";
-import { JWT } from "next-auth/jwt";
-
-interface CustomToken extends JWT {
-  accessToken?: string;
-  refreshToken?: string;
-  accessTokenExpires?: number;
-  error?: string;
+export interface ICredentials {
+  email: string;
+  password: string;
 }
 
-interface CustomUser extends User {
+export interface AuthenticatedUser {
   id: string;
+  email: string;
+}
+
+export interface IAuthorize {
+  user?: AuthenticatedUser;
   accessToken?: string;
   refreshToken?: string;
-  accessTokenExpires?: number;
+  expiresIn?: number;
 }
-interface RefreshTokenResponse {
-  accessToken: string;
-  refreshToken?: string;
-  expiresIn: number;
+export interface IToken {
+  user?: AuthenticatedUser;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  expiresIn?: number | null;
+  error?: string | null;
 }

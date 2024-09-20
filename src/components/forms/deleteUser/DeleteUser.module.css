@@ -1,0 +1,17 @@
+.container {
+  margin-top: 1rem;
+}
+.delete {
+  color: var(--errorColor);
+  text-decoration: underline;
+}
+.loading {
+  text-align: center;
+  height: 1rem;
+}
+.error {
+  display: block;
+  color: var(--errorColor);
+  text-align: center;
+  height: 1.5rem;
+}

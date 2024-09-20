@@ -24,13 +24,14 @@
   padding: 0;
   margin: 0;
 }
+
 body#body {
   color: var(--lightTextColor);
   font-family: var(--font-roboto);
   background-color: var(--background);
 }
 #body main {
-  min-height: calc(98vh - 56px - 56px);
+  min-height: calc(96.4vh - 56px - 56px);
 }
 
 h1 {

@@ -27,6 +27,10 @@ export default function LoginForm() {
   const handleCheck = () => {
     setData({ ...data, persist: !data.persist });
   };
+
+
+
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (data.email && data.password) {
@@ -37,7 +41,6 @@ export default function LoginForm() {
           password: data.password,
           redirect: false,
         });
-        console.log(responseNextAuth);
 
         if (responseNextAuth?.error) {
           setDataError(responseNextAuth.error);

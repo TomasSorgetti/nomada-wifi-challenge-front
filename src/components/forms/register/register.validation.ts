@@ -4,61 +4,33 @@ interface IData {
   confirm: string;
 }
 
-interface IRegisterErrors {
-  data: IData;
-  dataErrors: IData;
-  setDataErrors: React.Dispatch<React.SetStateAction<IData>>;
-}
-
-export const registerValidation = ({
-  data,
-  dataErrors,
-  setDataErrors,
-}: IRegisterErrors) => {
-  let hasErrors = false;
-  const newErrors: IData = { ...dataErrors };
+export function validateRegister(data: IData) {
+  const errors = {
+    email: "",
+    password: "",
+    confirm: "",
+  };
 
   //* Email validation
   if (data.email.trim() === "") {
-    newErrors.email = "Email is required";
-    hasErrors = true;
+    errors.email = "Email is required";
   } else if (!/\S+@\S+\.\S+/.test(data.email)) {
-    newErrors.email = "Email is invalid";
-    hasErrors = true;
-  } else {
-    newErrors.email = "";
+    errors.email = "Email is invalid";
   }
 
   //* Password validation
   if (data.password.trim() === "") {
-    newErrors.password = "Password is required";
-    hasErrors = true;
+    errors.password = "Password is required";
   } else if (data.password.length < 5) {
-    newErrors.password = "Password must be at least 5 characters";
-    hasErrors = true;
-  } else {
-    newErrors.password = "";
+    errors.password = "Password must be at least 5 characters";
   }
 
   //* Confirm password validation
   if (data.confirm.trim() === "") {
-    newErrors.confirm = "Please confirm your password";
-    hasErrors = true;
+    errors.confirm = "Please confirm your password";
   } else if (data.confirm !== data.password) {
-    newErrors.confirm = "Passwords do not match";
-    hasErrors = true;
-  } else {
-    newErrors.confirm = "";
+    errors.confirm = "Passwords do not match";
   }
 
-  if (hasErrors) {
-    setDataErrors(newErrors);
-  } else {
-    setDataErrors({
-      email: "",
-      password: "",
-      confirm: "",
-    });
-  }
-  return hasErrors;
-};
+  return errors;
+}

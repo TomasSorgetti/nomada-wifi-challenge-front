@@ -10,7 +10,7 @@ import Link from "next/link";
 import { authService } from "@/services/auth";
 import { useRouter } from "next/navigation";
 import ProgressBar from "@/components/ui/progressBar/ProgressBar";
-import { validateRegister } from "./validate";
+import { validateRegister } from "./register.validation";
 
 //* Main function
 export default function RegisterForm() {

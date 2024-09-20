@@ -24,7 +24,6 @@ export default function FormField({
       <label htmlFor={name}>{label}</label>
       <input
         type={type}
-        id={name}
         name={name}
         placeholder={placeholder}
         value={value}

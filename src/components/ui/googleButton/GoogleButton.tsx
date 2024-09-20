@@ -7,9 +7,9 @@ export default function GoogleButton({
   children: React.ReactNode;
 }) {
   return (
-    <button className={styles.button}>
+    <span className={styles.button}>
       <Image src={googleIcon} alt="Google icon" />
       {children}
-    </button>
+    </span>
   );
 }
