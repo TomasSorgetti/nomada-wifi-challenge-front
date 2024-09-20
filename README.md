@@ -35,7 +35,7 @@ npm run dev
 
 Seguí las indicaciónes del backend para que funcione la aplicación completa.
 
-Repositorio del Backend
+[Repositorio del Backend](https://github.com/TomasSorgetti/nomada-wifi-challenge-server)
 
 ## Arquitectura del Frontend
 
@@ -44,7 +44,7 @@ Repositorio del Backend
     ├── src/                                #carpeta donde estan los archivos principales de la aplicación
     │   ├── app/                            #carpeta donde estan las páginas
     │   │      ├── api/                         #api de next
-    │   │      ├── fonts/                       
+    │   │      ├── fonts/
     │   │      ├── page/                        #una carpeta con un archivo page.tsx por cada página
     │   │      ├── layout.tsx
     │   │      └── page.tsx
@@ -93,4 +93,3 @@ Repositorio del Backend
 ![image](https://github.com/user-attachments/assets/7cefebe8-db1f-4277-910d-8d8b3e6038a5)
 ![image](https://github.com/user-attachments/assets/8c6d75dd-3f6b-45e1-934c-03be0b1f6032)
 ![image](https://github.com/user-attachments/assets/9e21a5bd-0dcc-4bad-99e1-53bdfce977fc)
-
