@@ -9,7 +9,7 @@ git clone https://github.com/TomasSorgetti/nomada-wifi-challenge-front.git
 Entrá en la carpeta del proyecto e instalá las dependencias
 
 ```bash
-cd todosgamers-challenge-front
+cd nomada-wifi-challenge-front
 npm install
 ```
 
